@@ -9,9 +9,9 @@ Setting:
 Gameplay:
     Infinite runner, evitar obstáculos.
 
-    Controlos: virar para a esquerda ou para a direita, usar boost, usar powerup.
+    Controlos: virar para a esquerda ou para a direita, thrust para a frente (de 2 em 2 segundos), usar arma, usar powerup.
     
-    Virar faz também andar para a frente, rodando na direção. Carregar nos dois botões anda só para a frente
+   
 
 
 UI:
