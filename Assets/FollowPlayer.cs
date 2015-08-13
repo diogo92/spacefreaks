@@ -18,7 +18,5 @@ public class FollowPlayer : MonoBehaviour {
 			lastPlayerX=nextPlayerX;
 			transform.position=new Vector3(nextPlayerX,transform.position.y,transform.position.z);
 		}
-
-		Debug.Log (transform.position.x);
 	}
 }
