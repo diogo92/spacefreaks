@@ -7,7 +7,10 @@ public class PlayerControls : MonoBehaviour {
 	AudioSource audio;
 	public GameObject zap;
 	public bool thrust = true; //Se pode usar o thrust
+	public bool shoot = true;
 
+	public float rotation = 0;
+	public float acceleration = 0;
 	void Start() {
 		audio = gameObject.AddComponent < AudioSource > ();
 	}
@@ -20,8 +23,6 @@ public class PlayerControls : MonoBehaviour {
 		 */
 
 		// Rotacoes
-		float rotation = Input.GetAxis("Horizontal");
-		float acceleration = Input.GetAxis("Vertical");
 		if (rotation < 0) {
 			GetComponent<Animator> ().SetTrigger ("Right");
 		}
@@ -66,7 +67,6 @@ public class PlayerControls : MonoBehaviour {
 
 	}
 
-
 	//Cooldown para thrust
 	IEnumerator thrustCooldown(){
 		thrust = false;
@@ -74,11 +74,24 @@ public class PlayerControls : MonoBehaviour {
 		thrust = true;
 	}
 
-	void Shoot(){
-		Transform playerTransf = GetComponent<Rigidbody2D> ().transform;
-		GameObject shot = (GameObject)Instantiate (zap,playerTransf.position - playerTransf.up,Quaternion.identity);
-		shot.GetComponent<Rigidbody2D> ().AddForce (-transform.up* 100);
 
+	//Disparar projetil	
+	public void Shoot(){
+		if (shoot) {
+			Transform playerTransf = GetComponent<Rigidbody2D> ().transform;
+			GameObject shot = (GameObject)Instantiate (zap, playerTransf.position - playerTransf.up, Quaternion.identity);
+			shot.GetComponent<Rigidbody2D> ().AddForce (-transform.up * 500);
+			StartCoroutine(shootCooldown());
+		}
+
+	}
+
+	//Cooldown para projetil 
+
+	IEnumerator shootCooldown(){
+		shoot = false;
+		yield return new WaitForSeconds (1f);
+		shoot = true;
 
 	}
 

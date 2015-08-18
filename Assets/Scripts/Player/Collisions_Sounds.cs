@@ -3,38 +3,43 @@ using System.Collections;
 
 public class Collisions_Sounds : MonoBehaviour {
 
-	AudioSource audio;
+	AudioSource audioNormal;
+	AudioSource audioLower;
+	bool shootSound = true;
 
 	void Start () {
-		audio = gameObject.AddComponent < AudioSource > ();
-
+		audioNormal = gameObject.AddComponent < AudioSource > ();
+		audioLower = gameObject.AddComponent < AudioSource > ();
+		audioNormal.volume = 1f;
+		audioLower.volume = 0.1f;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.LeftControl)){
-			audio.volume = 0.1f;
-			audio.PlayOneShot((AudioClip)Resources.Load("sfx_pew"));
-		}
 
-		if (Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.RightArrow)) {
-			audio.volume = 1f;
-			audio.PlayOneShot((AudioClip)Resources.Load("sfx_move"));
-		}
+	public void pewSound(){
+		audioLower.PlayOneShot((AudioClip)Resources.Load("sfx_pew"));
+		StartCoroutine(shootSoundCD());
+	}
 
+	public void jetpackSound(){
+		audioNormal.PlayOneShot((AudioClip)Resources.Load("sfx_move"));
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		switch (collision.gameObject.name) {
 		case "BotWall":
-			audio.PlayOneShot((AudioClip)Resources.Load("sfx_thud"));
+			audioLower.PlayOneShot((AudioClip)Resources.Load("sfx_thud"));
 			break;
 		case "TopWall":
-			audio.PlayOneShot((AudioClip)Resources.Load("sfx_thud"));
+			audioLower.PlayOneShot((AudioClip)Resources.Load("sfx_thud"));
 			break;
 
 
 		}
+	}
+
+	IEnumerator shootSoundCD(){
+		shootSound = false;
+		yield return new WaitForSeconds (1f);
+		shootSound = true;
 	}
 }
 
