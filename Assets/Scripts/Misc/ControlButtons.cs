@@ -28,6 +28,12 @@ public class ControlButtons : MonoBehaviour {
 
 	public void Accelerate(){
 		playerControls.acceleration = 1;
+		collSounds.jetpackSound ();
+
 	}
 
+	public void Shoot(){
+		playerControls.Shoot ();
+		collSounds.pewSound ();
+	}
 }

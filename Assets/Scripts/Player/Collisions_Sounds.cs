@@ -15,8 +15,10 @@ public class Collisions_Sounds : MonoBehaviour {
 	}
 
 	public void pewSound(){
-		audioLower.PlayOneShot((AudioClip)Resources.Load("sfx_pew"));
-		StartCoroutine(shootSoundCD());
+		if (shootSound) {
+			audioLower.PlayOneShot ((AudioClip)Resources.Load ("sfx_pew"));
+			StartCoroutine (shootSoundCD ());
+		}
 	}
 
 	public void jetpackSound(){
