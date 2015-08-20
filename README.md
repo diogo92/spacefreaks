@@ -2,7 +2,7 @@
 
 Setting:
     
-    John Smith, bilionário, passeava distraído na sua nave espacial, quando entra na “zona proíbida” do espaço, um lugar cheio de perigos. A sua nave é destruída e John deve escapar a zona proíbida, evitando monstros e obstáculos.
+    John Smith, bilionário, passeava distraído na sua nave espacial, quando entra na “zona proíbida”, um lugar governado por piratas do espaço. A sua nave é destruída e John deve escapar a zona proíbida, evitando monstros e obstáculos.
 
 
 
