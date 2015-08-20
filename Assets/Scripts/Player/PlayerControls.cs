@@ -29,15 +29,15 @@ public class PlayerControls : MonoBehaviour {
 		if (rotation > 0) {
 			GetComponent<Animator> ().SetTrigger ("Left");
 		}
-		if(Mathf.Abs(GetComponent<Rigidbody2D>().angularVelocity)<100)
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().angularVelocity)<150)
 		GetComponent<Rigidbody2D>().AddTorque(-rotation);
 
 		//Limitar velocidade de rotacao
 		else {
-			if(GetComponent<Rigidbody2D>().angularVelocity>=100)
-				GetComponent<Rigidbody2D>().angularVelocity=50;
-			if(GetComponent<Rigidbody2D>().angularVelocity<=-100)
-				GetComponent<Rigidbody2D>().angularVelocity=-50;
+			if(GetComponent<Rigidbody2D>().angularVelocity>=150)
+				GetComponent<Rigidbody2D>().angularVelocity=100;
+			if(GetComponent<Rigidbody2D>().angularVelocity<=-150)
+				GetComponent<Rigidbody2D>().angularVelocity=-100;
 		}
 
 		//Aceleracao
