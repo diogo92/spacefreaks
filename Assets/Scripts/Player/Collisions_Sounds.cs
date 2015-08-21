@@ -33,7 +33,10 @@ public class Collisions_Sounds : MonoBehaviour {
 		case "TopWall":
 			audioLower.PlayOneShot((AudioClip)Resources.Load("sfx_thud"));
 			break;
-
+		case "Missile(Clone)":
+			GameObject hpbar = GameObject.FindGameObjectWithTag("HP_Bar");
+			hpbar.GetComponent<HP_Bar>().reduce();
+			break;
 
 		}
 	}
